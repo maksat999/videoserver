@@ -14,7 +14,7 @@
 
 <h1>Video Hosting Server ${name}</h1>
 
-<form action="/" enctype="multipart/form-data" method="post">
+<form action="/" enctype="multipart/form-data" method="post" >
     <p><input type="file" name="videofile">
         <input type="description" type="text">
         <input type="submit" value="Отправить"></p>

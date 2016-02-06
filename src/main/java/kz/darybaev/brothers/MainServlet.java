@@ -54,7 +54,7 @@ public class MainServlet extends HttpServlet{
 
         //максимальный размер данных который разрешено загружать в байтах
         //по умолчанию -1, без ограничений. Устанавливаем 10 мегабайт.
-        upload.setSizeMax(1024 * 1024 * 10);
+        upload.setSizeMax(1024 * 1024 * 20);
 
         try {
             List items = upload.parseRequest(req);
@@ -76,6 +76,7 @@ public class MainServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             return;
         }
+
     }
 
     /**
@@ -87,9 +88,10 @@ public class MainServlet extends HttpServlet{
      */
     private void processUploadedFile(FileItem item) throws Exception {
         File uploadetFile = null;
-        //выбираем файлу имя пока не найдём свободное
+        //вбираем файлу имя пока не найдём свободное
+         String videoName = item.getName();
         do{
-            String path = getServletContext().getRealPath("/upload/"+random.nextInt() + item.getName());
+            String   path = getServletContext().getRealPath("/upload/"+ videoName);
             uploadetFile = new File(path);
         }while(uploadetFile.exists());
 
@@ -97,6 +99,12 @@ public class MainServlet extends HttpServlet{
         uploadetFile.createNewFile();
         //записываем в него данные
         item.write(uploadetFile);
+
+        try {
+         Runtime.getRuntime().exec("ffmpeg -i C:\\Projects\\VideoServer\\target\\kz.darybaevBrothers-1.0-SNAPSHOT\\upload\\"+videoName+" C:\\Projects\\VideoServer\\target\\kz.darybaevBrothers-1.0-SNAPSHOT\\upload\\12.avi");
+            }
+        catch (Exception ee) {System.out.print(ee);}
+
     }
 
     /**

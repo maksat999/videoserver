@@ -12,5 +12,11 @@
 </head>
 <body>
 Body tag YAH!
+
+<form action="/secondJsp" enctype="multipart/form-data" method="post" >
+    <%--<p><input type="file" name="Secondvideofile">--%>
+        <input type="submit" value="Отправить"></p>
+</form>
+
 </body>
 </html>

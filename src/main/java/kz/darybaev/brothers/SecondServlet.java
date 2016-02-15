@@ -1,6 +1,8 @@
 package kz.darybaev.brothers;
 
 import com.xuggle.mediatool.IMediaReader;
+import com.xuggle.mediatool.IMediaViewer;
+import com.xuggle.mediatool.IMediaWriter;
 import com.xuggle.mediatool.ToolFactory;
 
 import javax.servlet.ServletException;
@@ -19,10 +21,14 @@ public class SecondServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("secondJsp.jsp").forward(req, resp);
 
-       IMediaReader reader = ToolFactory.newReader("input.mpg");
-        reader.addListener(ToolFactory.newWriter("output.flv", reader));
-        while (reader.readPacket() == null);
-
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+
+        }
+
 }

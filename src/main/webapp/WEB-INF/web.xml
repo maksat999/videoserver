@@ -36,6 +36,7 @@
         <servlet-name>secondServlet</servlet-name>
         <url-pattern>/secondJsp</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>mainServlet</servlet-name>
         <url-pattern>/</url-pattern>
